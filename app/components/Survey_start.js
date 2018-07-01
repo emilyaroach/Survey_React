@@ -35,7 +35,7 @@ class Survey_start extends React.Component {
 const styles = StyleSheet.create({
   survey: {
     flex: 1,
-    backgroundColor: 'blue'
+    backgroundColor: 'white'
   },
   get_started: {
     height: 300
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     height: 100,
     fontSize: 24,
     fontWeight: 'bold',
-    backgroundColor: 'red'
+    backgroundColor: 'white'
   },
   font_style: {
     fontFamily: 'Roboto',
@@ -58,14 +58,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'red',
   },
   image: {
     width: 120,
     height: 120
   },
   get_started_button: {
-    backgroundColor: 'yellow',
+    backgroundColor: 'white',
     alignItems: 'center',
   },
   get_started_text: {
