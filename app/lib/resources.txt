@@ -1,0 +1,7 @@
+https://github.com/vhpoet/react-native-styling-cheat-sheet
+
+https://appdividend.com/2017/08/23/redux-tutorial-example-scratch/
+
+https://reactnavigation.org/docs/en/stack-navigator.html#navigationoptions-used-by-stacknavigator
+
+https://medium.com/@jacobp100/react-native-custom-buttons-with-cssta-20a5e1c7dfeb

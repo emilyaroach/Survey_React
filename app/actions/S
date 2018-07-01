@@ -1,0 +1,27 @@
+
+        {/*           <Text >{this.props.count}</Text>
+                      <Button
+                          onPress = {() => this.props.addCounter()}
+                          title="Add"
+                        />
+                      <Button
+                          onPress = {() => this.props.removeCounter()}
+                          title="Remove"
+                      />    */}
+
+
+                      /* We'll ask a few questions to get to know the issues you care about. This will take 3 minutes and will help us find candidates and organizations that represent you. */
+
+                      position: absolute;
+                      width: 276px;
+                      height: 129px;
+                      left: 76px;
+                      top: 176px;
+
+                      font-family: Roboto;
+                      font-style: normal;
+                      font-weight: 500;
+                      line-height: normal;
+                      font-size: 24px;
+
+                      color: #000000;
