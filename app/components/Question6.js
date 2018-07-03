@@ -8,19 +8,19 @@ class Question6 extends React.Component {
     return (
       <View style={styles.survey_block}>
 
-        <Text style={styles.question_text}> Should the government restrict access to abortion? </Text>
+        <Text style={[styles.font_style, styles.title] }> Should the government restrict access to abortion? </Text>
         <Image style={styles.question_image} source={require('../lib/1q6.png')} />
 
         <View style={styles.button_row}>
 
-          <View elevation={5} style={styles.yesno_button}>
+          <View elevation={5} style={styles.response}>
 
           <Button
             onPress = {() => this.props.navigation.navigate('Home')}
             title='No'/>
           </View>
 
-          <View elevation={5} style={styles.yesno_button}>
+          <View elevation={5} style={styles.response}>
           <Button
             onPress = {() => this.props.navigation.navigate('Home')}
             title="Yes"/>
@@ -34,21 +34,24 @@ class Question6 extends React.Component {
 
 const styles = StyleSheet.create({
   survey_block: {
-    flex:1,
+    flex: 1,
     backgroundColor: 'white'
   },
-
-  question_text: {
-    flex:0.3,
-    fontFamily: "Roboto",
+  title: {
     fontSize: 20,
-    textAlign: 'center',
-    marginTop: 10,
+    fontWeight: 'bold'
   },
   question_image: {
     marginBottom: 20
   },
-  yesno_button: {
+  font_style: {
+    fontFamily: 'Roboto',
+    fontSize: 15.8,
+    marginTop: 10,
+    marginBottom: 10,
+    textAlign: 'center'
+  },
+  response: {
     flex:1,
     marginLeft:10,
     marginRight:10,

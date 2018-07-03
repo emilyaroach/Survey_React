@@ -40,11 +40,10 @@ const RootStack = createStackNavigator(
         </View>
 
         <View style={styles.container}>
-          <View elevation={5} style={styles.survey_block}>
+          <View style={styles.survey_block}>
             {/* Here goes the things */}
             <RootStack/>
           </View>
-
         </View>
 
 
@@ -91,22 +90,10 @@ const styles = StyleSheet.create({
   //The white rectangle that holds the questions
   survey_block: {
     //originally 360, 550, borderwidth 50
-    width: 330,
     height: 513,
-    borderWidth: 10,
-    borderColor: 'white',
-    backgroundColor: 'white',
-    borderRadius: 20,
-    //Shadow stuff
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 4
-    },
-    shadowRadius: 5,
-    shadowOpacity: 1.0
+    width: 330,
+    backgroundColor: 'black'
   }
-  }
-)
+})
 
 export default Welcome_Component;

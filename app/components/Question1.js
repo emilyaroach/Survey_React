@@ -1,44 +1,77 @@
 import React from 'react';
-import { Text, View, Button,StyleSheet,TouchableWithoutFeedback, Image} from 'react-native';
+import { Text, View, Button,StyleSheet,TouchableWithoutFeedback,TouchableOpacity, Image} from 'react-native';
 import {createStackNavigator} from 'react-navigation';
 
 class Question1 extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      response: null,
+      intensity: null,
+      style: 'row'
+    }
+    this.set_response = this.set_response.bind(this);
+    this.set_intensity = this.set_intensity.bind(this);
+  }
+
+  set_response(answer){
+    this.setState({response : answer})
+  }
+
+  set_intensity(level){
+    this.setState({intensity : level})
+  }
+
   render() {
     return (
       <View style={styles.survey_block}>
-        <Text style={[styles.font_style, styles.title] }>Should the government {"\n"}provide public healthcare {"\n"}for all Americans? </Text>
+        <View>
+          <Text style={[styles.font_style, styles.title] }>Should the government {"\n"}provide public healthcare {"\n"}for all Americans? </Text>
+        </View>
+
         <Image style={styles.question_image} source={require('../lib/1.png')}/>
 
       <View style={styles.button_row}>
 
-            <View elevation={5} >
+            <View elevation={5} style={styles.response}>
               <Button
-                onPress = {() => this.props.navigation.navigate('Question6')}
+                onPress = {() => this.set_response('no')}
                 title="No"/>
             </View>
 
-            <View elevation={5} >
+            <View elevation={5} style={styles.response}>
               <Button
                 onPress = {() => this.props.navigation.navigate('Question6')}
                 title="Yes"/>
             </View>
         </View>
-      </View>
+
+        <View style={{flex:1, flexDirection:'row'}}>
+          <View>
+             <TouchableOpacity>
+               <View style={styles.circle} onClick ={() => this.state.send1()}>
+               </View>
+             </TouchableOpacity>
+           </View>
+        </View>
+                <Text>{this.state.response}</Text>
+        </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
   survey_block: {
-    flex: 1,
-    backgroundColor: 'white'
+    height: 409,
+    flex: 1
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold'
   },
   question_image: {
-    marginBottom: 10
+    marginBottom: 20
   },
   font_style: {
     fontFamily: 'Roboto',
@@ -67,6 +100,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  circle: {
+    width: 20,
+    height: 20,
+    borderRadius: 150/2,
+    backgroundColor: '#00BCD4'
   }
 })
 
