@@ -1,3 +1,13 @@
+## Future Functionalities
+* [Animations to select intensity]
+* [Changing color of response if the other was selected]
+* [Using redux to store the response and intesity into an object]
+* [Send object to firebase]
+
+## Things to fix
+* [Issue with corners of round borders]
+
+
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
