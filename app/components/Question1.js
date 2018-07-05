@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Button,StyleSheet,TouchableWithoutFeedback,TouchableOpacity, Image} from 'react-native';
+import { Text, View, Button,StyleSheet,TouchableWithoutFeedback,TouchableOpacity, Image, BackHandler} from 'react-native';
 import {createStackNavigator} from 'react-navigation';
 
 class Question1 extends React.Component {
@@ -13,6 +13,18 @@ class Question1 extends React.Component {
     }
     this.set_response = this.set_response.bind(this);
     this.set_intensity = this.set_intensity.bind(this);
+    this.handleBackPress = this.handleBackPress.bind(this);
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+  }
+
+  // Still need to figure out how we want the transition
+  handleBackPress = () => {
+    this.props.navigation.goBack();
+    window.setTimeout(() => {this.props.intensity_toggle_on()}, 0.08); // works best when the goBack is async
+    return true;
   }
 
   set_response(answer){
@@ -47,16 +59,7 @@ class Question1 extends React.Component {
             </View>
         </View>
 
-        <View style={{flex:1, flexDirection:'row'}}>
-          <View>
-             <TouchableOpacity>
-               <View style={styles.circle} onClick ={() => this.state.send1()}>
-               </View>
-             </TouchableOpacity>
-           </View>
-        </View>
-                <Text>{this.state.response}</Text>
-        </View>
+      </View>
     )
   }
 }
@@ -64,7 +67,8 @@ class Question1 extends React.Component {
 const styles = StyleSheet.create({
   survey_block: {
     height: 409,
-    flex: 1
+    flex: 1,
+    backgroundColor: 'white'
   },
   title: {
     fontSize: 20,

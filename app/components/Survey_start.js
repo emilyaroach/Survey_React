@@ -1,11 +1,25 @@
 import React from 'react';
+import {createStackNavigator, NavigationActions} from 'react-navigation';
 import { Text, View, Button,StyleSheet, TouchableWithoutFeedback, Image} from 'react-native';
+
 
 class Survey_start extends React.Component {
 
+  constructor(props){
+    super(props);
+    this.state = {
+    }
+  }
+
+
+
   render() {
+
     return (
-      <View style={styles.survey}>
+      <View style={[styles.survey, {
+        width: 330,
+        height: this.props.intensity.toggle ? 513 : 513
+      }]}>
 
         <View style={styles.block1}>
           <Text style={[styles.font_style, styles.title] }>We'll ask a few questions {"\n"}to get to know the issues {"\n"}you care about.</Text>
@@ -23,7 +37,7 @@ class Survey_start extends React.Component {
 
         <View >
           <TouchableWithoutFeedback
-            onPressIn = {() => {this.props.navigation.navigate('Question1')}} >
+            onPressIn = {() => {[this.props.intensity_toggle_off(), this.props.navigation.navigate('Question1')]}} >
           <View style={styles.get_started_button}><Text style={styles.get_started_text}>GET STARTED</Text></View>
           </TouchableWithoutFeedback>
         </View>
@@ -37,13 +51,13 @@ class Survey_start extends React.Component {
 const styles = StyleSheet.create({
   // General survey block style
   survey: {
-    flex: 1,
-    height: 513,
-    borderWidth: 10,
-    alignItems: 'center',
-    borderColor: 'blue',
     backgroundColor: 'white',
+    overflow: 'hidden',
+    alignItems: 'center',
+    borderWidth: 10,
+    borderColor: 'white',
     borderRadius: 20,
+    position: 'absolute',
     //Shadow stuff
     shadowColor: '#E5E5E5',
     shadowOffset: {
@@ -52,7 +66,6 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 5,
     shadowOpacity: 1.0,
-    overflow: 'hidden'
   },
 
   // Each block dividing the sections

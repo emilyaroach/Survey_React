@@ -1,10 +1,34 @@
 import React from 'react';
-import { Text, View, Button,StyleSheet,TouchableWithoutFeedback, Image} from 'react-native';
+import { Text, View, Button,StyleSheet,TouchableWithoutFeedback, Image, Easing , Animated} from 'react-native';
 import {connect} from 'react-redux';
-import {createStackNavigator} from 'react-navigation';
-import Survey_start from './Survey_start.js';
-import Question1 from './Question1.js'
+import {createStackNavigator, NavigationActions} from 'react-navigation';
+import Survey_start from '../containers/Survey_start_container';
+import Question1 from '../containers/Question1_container'
 import Question6 from './Question6.js'
+
+const transitionConfig = () => {
+  return {
+    transitionSpec: {
+      duration: 300,
+      easing: Easing.out(Easing.poly(5)),
+      timing: Animated.timing,
+      useNativeDriver: true,
+    },
+    screenInterpolator: sceneProps => {
+      const { layout, position, scene } = sceneProps
+
+      const thisSceneIndex = scene.index
+      const width = layout.initWidth
+
+      const translateX = position.interpolate({
+        inputRange: [thisSceneIndex - 1, thisSceneIndex],
+        outputRange: [width, 0],
+      })
+
+      return { transform: [ { translateX } ] }
+    },
+  }
+}
 
 const RootStack = createStackNavigator(
   {
@@ -16,17 +40,27 @@ const RootStack = createStackNavigator(
     initialRouteName: 'Home',
     navigationOptions:  {
       header: null
-    }
+    },
   }
 );
 
+
+
+let bool = true;
  class Welcome_Component extends React.Component {
 
    constructor(props){
      super(props);
+     this.state = {
+       survey_dimensions : {
+         width: 330,
+         height: this.props.intensity.toggle ? 513 : 409
+       }
+     }
    }
 
   render() {
+
     return (
       <View style={{
         flex: 1,
@@ -40,12 +74,14 @@ const RootStack = createStackNavigator(
         </View>
 
         <View style={styles.container}>
-          <View style={styles.survey_block}>
+          <View style={[styles.survey_block,{
+            width: 330,
+            height: this.props.intensity.toggle ? 513 : 409
+          }]}>
             {/* Here goes the things */}
-            <RootStack/>
+            <RootStack />
           </View>
         </View>
-
 
       </View>
 
@@ -90,9 +126,8 @@ const styles = StyleSheet.create({
   //The white rectangle that holds the questions
   survey_block: {
     //originally 360, 550, borderwidth 50
-    height: 513,
-    width: 330,
-    backgroundColor: 'black'
+    borderRadius: 20,
+    overflow: 'hidden',
   }
 })
 
