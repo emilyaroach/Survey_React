@@ -2,38 +2,26 @@ import React from 'react';
 import { Text, View, Button,StyleSheet,TouchableWithoutFeedback,TouchableOpacity, Image, BackHandler} from 'react-native';
 import {createStackNavigator} from 'react-navigation';
 
+
 class Question1 extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
-      response: null,
-      intensity: null,
-      style: 'row'
     }
-    this.set_response = this.set_response.bind(this);
-    this.set_intensity = this.set_intensity.bind(this);
     this.handleBackPress = this.handleBackPress.bind(this);
   }
 
   componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-  }
+     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+   }
 
   // Still need to figure out how we want the transition
   handleBackPress = () => {
     this.props.navigation.goBack();
-    window.setTimeout(() => {this.props.intensity_toggle_on()}, 0.08); // works best when the goBack is async
     return true;
   }
 
-  set_response(answer){
-    this.setState({response : answer})
-  }
-
-  set_intensity(level){
-    this.setState({intensity : level})
-  }
 
   render() {
     return (
@@ -66,9 +54,23 @@ class Question1 extends React.Component {
 
 const styles = StyleSheet.create({
   survey_block: {
-    height: 409,
-    flex: 1,
-    backgroundColor: 'white'
+    width: 330,
+    height: 519,
+    backgroundColor: 'white',
+    overflow: 'hidden',
+    alignItems: 'center',
+    borderWidth: 10,
+    borderColor: 'white',
+    borderRadius: 20,
+    position: 'absolute',
+    //Shadow stuff
+    shadowColor: '#E5E5E5',
+    shadowOffset: {
+      width: 0,
+      height: 4
+    },
+    shadowRadius: 5,
+    shadowOpacity: 1.0,
   },
   title: {
     fontSize: 20,

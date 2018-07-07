@@ -1,8 +1,26 @@
 import React from 'react';
-import { Text, View, Button,StyleSheet,TouchableWithoutFeedback, Image} from 'react-native';
-import {createStackNavigator} from 'react-navigation';
+import { Text, View, Button,StyleSheet,TouchableWithoutFeedback, Image,BackHandler} from 'react-native';
+import {createSwitchNavigator,createDrawerNavigator,createMaterialTopTabNavigator,createStackNavigator,withNavigation} from 'react-navigation';
 
 class Question6 extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+    }
+    this.handleBackPress = this.handleBackPress.bind(this);
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+  }
+
+  // Still need to figure out how we want the transition
+  handleBackPress = () => {
+    this.props.navigation.navigate('Question1');
+    return true;
+  }
+
 
   render() {
     return (
@@ -34,8 +52,23 @@ class Question6 extends React.Component {
 
 const styles = StyleSheet.create({
   survey_block: {
-    flex: 1,
-    backgroundColor: 'white'
+    width: 330,
+    height: 519,
+    backgroundColor: 'white',
+    overflow: 'hidden',
+    alignItems: 'center',
+    borderWidth: 10,
+    borderColor: 'white',
+    borderRadius: 20,
+    position: 'absolute',
+    //Shadow stuff
+    shadowColor: '#E5E5E5',
+    shadowOffset: {
+      width: 0,
+      height: 4
+    },
+    shadowRadius: 5,
+    shadowOpacity: 1.0,
   },
   title: {
     fontSize: 20,

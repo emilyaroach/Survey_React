@@ -1,6 +1,7 @@
 import React from 'react';
-import {createStackNavigator, NavigationActions} from 'react-navigation';
-import { Text, View, Button,StyleSheet, TouchableWithoutFeedback, Image} from 'react-native';
+import {createStackNavigator,createDrawerNavigator, NavigationActions, createMaterialTopTabNavigator,BackHandler} from 'react-navigation';
+import { Text, View, Button, StyleSheet, TouchableWithoutFeedback, Image} from 'react-native';
+import { withNavigation } from 'react-navigation';
 
 
 class Survey_start extends React.Component {
@@ -11,15 +12,10 @@ class Survey_start extends React.Component {
     }
   }
 
-
-
   render() {
 
     return (
-      <View style={[styles.survey, {
-        width: 330,
-        height: this.props.intensity.toggle ? 513 : 513
-      }]}>
+      <View style={styles.survey_block}>
 
         <View style={styles.block1}>
           <Text style={[styles.font_style, styles.title] }>We'll ask a few questions {"\n"}to get to know the issues {"\n"}you care about.</Text>
@@ -37,7 +33,7 @@ class Survey_start extends React.Component {
 
         <View >
           <TouchableWithoutFeedback
-            onPressIn = {() => {[this.props.intensity_toggle_off(), this.props.navigation.navigate('Question1')]}} >
+            onPressIn = {() => {this.props.navigation.navigate('Question1')}} >
           <View style={styles.get_started_button}><Text style={styles.get_started_text}>GET STARTED</Text></View>
           </TouchableWithoutFeedback>
         </View>
@@ -50,7 +46,9 @@ class Survey_start extends React.Component {
 
 const styles = StyleSheet.create({
   // General survey block style
-  survey: {
+  survey_block: {
+    width: 330,
+    height: 519,
     backgroundColor: 'white',
     overflow: 'hidden',
     alignItems: 'center',
