@@ -6,7 +6,6 @@ import Survey_start from '../containers/Survey_start_container';
 import Question1 from '../containers/Question1_container'
 import Question6 from './Question6.js'
 
-
 var RootStack = createStackNavigator(
   {
     Home: Survey_start,
@@ -75,7 +74,6 @@ const styles = StyleSheet.create({
     //Grey
     backgroundColor: '#E5E5E5'
   },
-
   button: {
     marginBottom: 30,
     width: 260,

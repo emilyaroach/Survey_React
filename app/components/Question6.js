@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, View, Button,StyleSheet,TouchableWithoutFeedback, Image,BackHandler} from 'react-native';
-import {createSwitchNavigator,createDrawerNavigator,createMaterialTopTabNavigator,createStackNavigator,withNavigation} from 'react-navigation';
+import { Text, View, Button,StyleSheet,TouchableHighlight,TouchableOpacity, Image, BackHandler} from 'react-native';
+import {createStackNavigator} from 'react-navigation';
+
 
 class Question6 extends React.Component {
 
@@ -12,12 +13,12 @@ class Question6 extends React.Component {
   }
 
   componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-  }
+     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+   }
 
   // Still need to figure out how we want the transition
   handleBackPress = () => {
-    this.props.navigation.navigate('Question1');
+    this.props.navigation.goBack();
     return true;
   }
 
@@ -25,26 +26,23 @@ class Question6 extends React.Component {
   render() {
     return (
       <View style={styles.survey_block}>
-
-        <Text style={[styles.font_style, styles.title] }> Should the government restrict access to abortion? </Text>
-        <Image style={styles.question_image} source={require('../lib/1q6.png')} />
-
-        <View style={styles.button_row}>
-
-          <View elevation={5} style={styles.response}>
-
-          <Button
-            onPress = {() => this.props.navigation.navigate('Home')}
-            title='No'/>
-          </View>
-
-          <View elevation={5} style={styles.response}>
-          <Button
-            onPress = {() => this.props.navigation.navigate('Home')}
-            title="Yes"/>
-          </View>
-
+        <View style={styles.block1}>
+          <Text style={[styles.font_style, styles.title] }>Should the government restrict access to abortion?  </Text>
         </View>
+
+        <Image style={styles.question_image} source={require('../lib/1q6.png')}/>
+
+      <View style={styles.button_row}>
+
+              <TouchableHighlight style={styles.response} onPress = {() => this.props.navigation.navigate('Home')}>
+               <Text style={[styles.font_style,styles.response_text]}> NO </Text>
+             </TouchableHighlight>
+
+             <TouchableHighlight style={styles.response} onPress = {() => this.props.navigation.navigate('Home')}>
+              <Text style={[styles.font_style,styles.response_text]}> YES </Text>
+            </TouchableHighlight>
+        </View>
+
       </View>
     )
   }
@@ -57,8 +55,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     overflow: 'hidden',
     alignItems: 'center',
-    borderWidth: 10,
-    borderColor: 'white',
     borderRadius: 20,
     position: 'absolute',
     //Shadow stuff
@@ -70,27 +66,33 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowOpacity: 1.0,
   },
+  block1: {
+    width:292,
+    height: 115,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold'
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   question_image: {
-    marginBottom: 20
   },
   font_style: {
     fontFamily: 'Roboto',
-    fontSize: 15.8,
-    marginTop: 10,
-    marginBottom: 10,
-    textAlign: 'center'
+    fontSize: 18,
+    textAlign: 'justify'
   },
   response: {
-    flex:1,
+    width: 127,
+    height: 44,
+    backgroundColor: '#2D9CDB',
     marginLeft:10,
     marginRight:10,
-
+    justifyContent: 'center',
+    alignItems: 'center',
     //Shadow stuff
-    borderRadius: 10,
     shadowColor: '#000000',
     shadowOffset: {
       width: 0,
@@ -99,11 +101,22 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowOpacity: 1.0
   },
+  response_text: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
   button_row: {
     flex: 0.25,
+    marginTop: 13,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  circle: {
+    width: 20,
+    height: 20,
+    borderRadius: 150/2,
+    backgroundColor: '#00BCD4'
   }
 })
 

@@ -1,8 +1,6 @@
 import React from 'react';
 import {createStackNavigator,createDrawerNavigator, NavigationActions, createMaterialTopTabNavigator,BackHandler} from 'react-navigation';
 import { Text, View, Button, StyleSheet, TouchableWithoutFeedback, Image} from 'react-native';
-import { withNavigation } from 'react-navigation';
-
 
 class Survey_start extends React.Component {
 

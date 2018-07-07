@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Button,StyleSheet,TouchableWithoutFeedback,TouchableOpacity, Image, BackHandler} from 'react-native';
+import { Text, View, Button,StyleSheet,TouchableHighlight,TouchableOpacity, Image, BackHandler} from 'react-native';
 import {createStackNavigator} from 'react-navigation';
 
 
@@ -26,7 +26,7 @@ class Question1 extends React.Component {
   render() {
     return (
       <View style={styles.survey_block}>
-        <View>
+        <View style={styles.block1}>
           <Text style={[styles.font_style, styles.title] }>Should the government {"\n"}provide public healthcare {"\n"}for all Americans? </Text>
         </View>
 
@@ -34,17 +34,21 @@ class Question1 extends React.Component {
 
       <View style={styles.button_row}>
 
-            <View elevation={5} style={styles.response}>
-              <Button
-                onPress = {() => this.set_response('no')}
-                title="No"/>
-            </View>
+              <TouchableHighlight style={styles.response} onPress = {() => this.props.navigation.navigate('Question6')}>
+               <Text style={[styles.font_style,styles.response_text]}> NO </Text>
+             </TouchableHighlight>
 
-            <View elevation={5} style={styles.response}>
-              <Button
-                onPress = {() => this.props.navigation.navigate('Question6')}
-                title="Yes"/>
-            </View>
+             <TouchableHighlight style={styles.response} onPress = {() => this.props.navigation.navigate('Question6')}>
+              <Text style={[styles.font_style,styles.response_text]}> YES </Text>
+            </TouchableHighlight>
+        </View>
+
+        <View style={styles.block2}>
+          <Text> How important is this issue to you? </Text>
+        </View>
+
+        <View style={styles.block3}>
+
         </View>
 
       </View>
@@ -59,8 +63,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     overflow: 'hidden',
     alignItems: 'center',
-    borderWidth: 10,
-    borderColor: 'white',
     borderRadius: 20,
     position: 'absolute',
     //Shadow stuff
@@ -72,27 +74,34 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowOpacity: 1.0,
   },
+  block1: {
+    width:292,
+    height: 115,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold'
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   question_image: {
-    marginBottom: 20
   },
   font_style: {
     fontFamily: 'Roboto',
-    fontSize: 15.8,
-    marginTop: 10,
-    marginBottom: 10,
-    textAlign: 'center'
+    fontSize: 18,
+    textAlign: 'justify'
   },
   response: {
-    flex:1,
+    width: 127,
+    height: 44,
+    backgroundColor: '#2D9CDB',
     marginLeft:10,
     marginRight:10,
-
+    borderRadius: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
     //Shadow stuff
-    borderRadius: 10,
     shadowColor: '#000000',
     shadowOffset: {
       width: 0,
@@ -101,11 +110,25 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowOpacity: 1.0
   },
+  response_text: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
   button_row: {
     flex: 0.25,
+    marginTop: 13,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  block2: {
+    marginTop: 44
+  },
+  block3: {
+    width: 260,
+    height: 36,
+    borderRadius: 27,
+    borderWidth: 1
   },
   circle: {
     width: 20,
