@@ -1,15 +1,17 @@
 import React from 'react';
 import { Text, View, Button,StyleSheet,TouchableWithoutFeedback,TouchableOpacity, Image, BackHandler} from 'react-native';
 import {createStackNavigator} from 'react-navigation';
-
+import * as questions from '../lib/questions.json';
 
 class Question1 extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
+      index: 1
     }
     this.handleBackPress = this.handleBackPress.bind(this);
+    this.set_index = this.set_index.bind(this);
   }
 
   componentDidMount() {
@@ -22,12 +24,17 @@ class Question1 extends React.Component {
     return true;
   }
 
+  set_index(newIndex) {
+    if(this.state.index < 10) {
+     this.setState({index: newIndex});
+    }
+  }
 
   render() {
     return (
       <View style={styles.survey_block}>
         <View>
-          <Text style={[styles.font_style, styles.title] }>Should the government {"\n"}provide public healthcare {"\n"}for all Americans? </Text>
+          <Text style={[styles.font_style, styles.title] }>{questions["question" + this.state.index].qtext} </Text>
         </View>
 
         <Image style={styles.question_image} source={require('../lib/1.png')}/>
@@ -36,13 +43,13 @@ class Question1 extends React.Component {
 
             <View elevation={5} style={styles.response}>
               <Button
-                onPress = {() => this.set_response('no')}
+                onPress = {() => this.set_index(this.state.index + 1)}
                 title="No"/>
             </View>
 
             <View elevation={5} style={styles.response}>
               <Button
-                onPress = {() => this.props.navigation.navigate('Question6')}
+                onPress = {() => this.set_index(this.state.index + 1)}
                 title="Yes"/>
             </View>
         </View>
