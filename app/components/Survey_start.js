@@ -13,7 +13,7 @@ class Survey_start extends React.Component {
   render() {
 
     return (
-      <View style={styles.survey_block}>
+      <View style={styles.survey_block} elevation={5}>
 
         <View style={styles.block1}>
           <Text style={[styles.font_style, styles.title] }>We'll ask a few questions {"\n"}to get to know the issues {"\n"}you care about.</Text>
@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
     borderWidth: 10,
     borderColor: 'white',
     borderRadius: 20,
-    position: 'absolute',
     //Shadow stuff
     shadowColor: '#E5E5E5',
     shadowOffset: {
@@ -89,7 +88,6 @@ const styles = StyleSheet.create({
     marginBottom:41.54,
     backgroundColor: 'white'
   },
-
   // Style for general font
   font_style: {
     fontFamily: 'Roboto',

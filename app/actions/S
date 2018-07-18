@@ -25,3 +25,41 @@
                       font-size: 24px;
 
                       color: #000000;
+
+
+
+                      {/* */}
+                      <View style= { {width: 262, height:30 , marginTop: 57}}>
+
+                        <View style={{
+                            width: 262,
+                          position: 'absolute',
+                          borderBottomColor: 'black',
+                          borderBottomWidth: 1
+                        }}></View>
+                      <View style={{width: 262,position: 'absolute', top:-14, flexDirection: 'row',justifyContent: 'space-between'}}>
+                        <TouchableHighlight style= {styles.circle} onPress = {() => this.toggle_selection()}>
+                          <View>{this.state.response_option[0] && <View style={{width: 20,height: 20,borderRadius: 150/2,backgroundColor: '#2D9CDB'}}></View> }
+                          </View>
+                        </TouchableHighlight>
+
+                        <TouchableHighlight style= {styles.circle} onPress = {() => this.toggle_selection()}>
+                          <View>{this.state.response_option[1] && <View style={{width: 20,height: 20,borderRadius: 150/2,backgroundColor: '#2D9CDB'}}></View> }
+                          </View>
+                        </TouchableHighlight>
+                        <TouchableHighlight style= {styles.circle} onPress = {() => this.toggle_selection()}>
+                          <View>{this.state.response_option[2] && <View style={{width: 20,height: 20,borderRadius: 150/2,backgroundColor: '#2D9CDB'}}></View> }
+                          </View>
+                        </TouchableHighlight>
+                        <TouchableHighlight style= {styles.circle} onPress = {() => this.toggle_selection()}>
+                          <View>{this.state.response_option[3] && <View style={{width: 20,height: 20,borderRadius: 150/2,backgroundColor: '#2D9CDB'}}></View> }
+                          </View>
+                        </TouchableHighlight>
+                        <TouchableHighlight style= {styles.circle} onPress = {() => this.toggle_selection()}>
+                          <View>{this.state.response_option[4] && <View style={{width: 20,height: 20,borderRadius: 150/2,backgroundColor: '#2D9CDB'}}></View> }
+                          </View>
+                        </TouchableHighlight>
+                      </View>
+
+                      </View>
+                    </View>

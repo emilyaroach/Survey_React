@@ -1,17 +1,16 @@
 import {connect} from 'react-redux';
 import Question1 from '../components/Question1'
-import { intensity_toggle_on, intensity_toggle_off } from '../actions/Intensity_toggle_action';
+import {changeName} from '../actions/Actions_name';
 
 
 function mapStateToProps(state){
   return {
-    intensity: state.intensity_toggle,
+    user_info : state.change_name_reducer
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  intensity_toggle_on: () => dispatch(intensity_toggle_on()),
-  intensity_toggle_on: () => dispatch(intensity_toggle_on())
+  changeName: (name) => dispatch(changeName(name))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Question1);

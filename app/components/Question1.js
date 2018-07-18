@@ -1,55 +1,79 @@
 import React from 'react';
 import { Text, View, Button,StyleSheet,TouchableHighlight,TouchableOpacity, Image, BackHandler} from 'react-native';
 import {createStackNavigator} from 'react-navigation';
+import Checkbox from './checkbox';
+import { StackActions, NavigationActions } from 'react-navigation';
 
+const resetAction = StackActions.reset({
+  index: 1,
+  actions: [NavigationActions.navigate({ routeName: 'Question1' })],
+});
 
 class Question1 extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
+      response: 'default',
+      next_screen: false,
+      num_question: 1,
+      questions: {
+        1 :{
+          qtext: 'dsffds',
+          img: 'dsfdf'
+        },
+        2: {
+          qtext:'dsifdsf',
+          img:'dsfsdf'
+        }
+      }
     }
-    this.handleBackPress = this.handleBackPress.bind(this);
+    this.set_response = this.set_response.bind(this)
+    this.next_screen = this.next_screen.bind(this)
+    this.change_screen = this.change_screen.bind(this)
   }
 
-  componentDidMount() {
-     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-   }
 
-  // Still need to figure out how we want the transition
-  handleBackPress = () => {
-    this.props.navigation.goBack();
-    return true;
+  set_response(new_response) {
+    this.setState({response: new_response});
   }
 
+  change_screen(page, check){
+    this.setState({next_screen: check});
+    this.props.navigation.navigate(page)
+  }
+
+  reset(){
+    return (this.props.navigation
+               .dispatch(StackActions.reset(
+                 {
+                    index: 0,
+                    actions: [
+                      NavigationActions.navigate({ routeName: 'Question1'})
+                    ]
+                  })));
+  }
+
+  next_screen(){
+     {this.state.next_screen ?  this.change_screen('Question1',false) : this.change_screen('test', true)  }
+  }
 
   render() {
     return (
-      <View style={styles.survey_block}>
+      <View style={styles.survey_block} elevation={5}>
         <View style={styles.block1}>
           <Text style={[styles.font_style, styles.title] }>Should the government {"\n"}provide public healthcare {"\n"}for all Americans? </Text>
         </View>
 
+        <Text> this.state.questions[this.num_question].qtext</Text>
+
         <Image style={styles.question_image} source={require('../lib/1.png')}/>
 
-      <View style={styles.button_row}>
+        <Checkbox  setResponse={this.set_response}/>
 
-              <TouchableHighlight style={styles.response} onPress = {() => this.props.navigation.navigate('Question6')}>
-               <Text style={[styles.font_style,styles.response_text]}> NO </Text>
-             </TouchableHighlight>
+        <Text> Response: {this.state.response} </Text>
 
-             <TouchableHighlight style={styles.response} onPress = {() => this.props.navigation.navigate('Question6')}>
-              <Text style={[styles.font_style,styles.response_text]}> YES </Text>
-            </TouchableHighlight>
-        </View>
-
-        <View style={styles.block2}>
-          <Text> How important is this issue to you? </Text>
-        </View>
-
-        <View style={styles.block3}>
-
-        </View>
+        <TouchableHighlight onPress = {() => this.reset()}><Text>Next</Text></TouchableHighlight>
 
       </View>
     )
@@ -61,10 +85,8 @@ const styles = StyleSheet.create({
     width: 330,
     height: 519,
     backgroundColor: 'white',
-    overflow: 'hidden',
     alignItems: 'center',
     borderRadius: 20,
-    position: 'absolute',
     //Shadow stuff
     shadowColor: '#E5E5E5',
     shadowOffset: {
@@ -104,7 +126,7 @@ const styles = StyleSheet.create({
     //Shadow stuff
     shadowColor: '#000000',
     shadowOffset: {
-      width: 0,
+      width: 130,
       height: 3
     },
     shadowRadius: 5,
@@ -131,10 +153,14 @@ const styles = StyleSheet.create({
     borderWidth: 1
   },
   circle: {
-    width: 20,
-    height: 20,
+    width: 30,
+    height: 30,
     borderRadius: 150/2,
-    backgroundColor: '#00BCD4'
+    borderWidth: 2,
+    borderColor: 'black',
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 })
 

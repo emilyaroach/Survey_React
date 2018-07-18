@@ -1,17 +1,13 @@
 import {connect} from 'react-redux';
 import Welcome from '../components/Welcome_Component'
-import { intensity_toggle_on, intensity_toggle_off } from '../actions/Intensity_toggle_action';
 
 
 function mapStateToProps(state){
   return {
-    intensity: state.intensity_toggle,
+    intensity: 1,
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  intensity_toggle_on: () => dispatch(intensity_toggle_on()),
-  intensity_toggle_on: () => dispatch(intensity_toggle_on())
-})
 
-export default connect(mapStateToProps,mapDispatchToProps)(Welcome);
+
+export default connect(mapStateToProps)(Welcome);

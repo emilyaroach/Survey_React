@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
 import counterReducer from './counterReducer';
-import intensity_toggle from './intensity_toggle_reducer'
+import change_name_reducer from './change_name_reducer'
 
 const rootReducer = combineReducers({
-  intensity_toggle,
-  counterReducer
+  counterReducer,
+  change_name_reducer
 });
 
 export default rootReducer;

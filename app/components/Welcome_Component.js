@@ -2,21 +2,24 @@ import React from 'react';
 import { Text, View, Button,StyleSheet,TouchableWithoutFeedback, Image, Easing , Animated} from 'react-native';
 import {connect} from 'react-redux';
 import {createStackNavigator,createSwitchNavigator,createMaterialTopTabNavigator,createBottomTabNavigator, NavigationActions} from 'react-navigation';
-import Survey_start from '../containers/Survey_start_container';
+import Survey_start from './Survey_start';
 import Question1 from '../containers/Question1_container'
 import Question6 from './Question6.js'
 
 var RootStack = createStackNavigator(
   {
-    Home: Survey_start,
-    Question1: Question1,
-    Question6: Question6
+    Home: {screen: Survey_start},
+    Question1: {screen: Question1},
+    Question2: {screen: Question6},
+    test: {screen: Question1}
   },
   {
     initialRouteName: 'Home',
     headerMode: 'none',
     cardStyle : {
-      backgroundColor: 'transparent'
+      backgroundColor: 'transparent',
+      alignItems:'center',
+      justifyContent:'center'
     }
   }
 );
@@ -26,10 +29,6 @@ var RootStack = createStackNavigator(
    constructor(props){
      super(props);
      this.state = {
-       survey_dimensions : {
-         width: 330,
-         height: 513
-       }
      }
    }
 
@@ -48,9 +47,7 @@ var RootStack = createStackNavigator(
         </View>
 
         <View style={styles.container}>
-          <View style={[styles.survey_block,{
-
-          }]}>
+          <View style={[styles.survey_block]}>
             {/* Here goes the things */}
             <RootStack/>
           </View>
@@ -98,9 +95,8 @@ const styles = StyleSheet.create({
   //The white rectangle that holds the questions
   survey_block: {
     //originally 360, 550, borderwidth 50
-    width: 330,
-    height: 513,
-    backgroundColor: 'transparent'
+    width: 360,
+    height: 549,
   }
 })
 
