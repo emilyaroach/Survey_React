@@ -1,47 +1,25 @@
 import React from 'react';
 import { Text, View, Button,StyleSheet,TouchableHighlight,TouchableOpacity, Image, BackHandler} from 'react-native';
 import {createStackNavigator} from 'react-navigation';
-<<<<<<< HEAD
 import Checkbox from './checkbox';
 import { StackActions, NavigationActions } from 'react-navigation';
-
-const resetAction = StackActions.reset({
-  index: 1,
-  actions: [NavigationActions.navigate({ routeName: 'Question1' })],
-});
-=======
 import * as questions from '../lib/questions.json';
->>>>>>> 224ed7321c4629c016c966dde3fe20f9f8548959
+
 
 class Question1 extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
-<<<<<<< HEAD
       response: 'default',
       next_screen: false,
       num_question: 1,
-      questions: {
-        1 :{
-          qtext: 'dsffds',
-          img: 'dsfdf'
-        },
-        2: {
-          qtext:'dsifdsf',
-          img:'dsfsdf'
-        }
-      }
+      index: 1
     }
     this.set_response = this.set_response.bind(this)
     this.next_screen = this.next_screen.bind(this)
     this.change_screen = this.change_screen.bind(this)
-=======
-      index: 1
-    }
-    this.handleBackPress = this.handleBackPress.bind(this);
     this.set_index = this.set_index.bind(this);
->>>>>>> 224ed7321c4629c016c966dde3fe20f9f8548959
   }
 
 
@@ -49,7 +27,6 @@ class Question1 extends React.Component {
     this.setState({response: new_response});
   }
 
-<<<<<<< HEAD
   change_screen(page, check){
     this.setState({next_screen: check});
     this.props.navigation.navigate(page)
@@ -68,51 +45,31 @@ class Question1 extends React.Component {
 
   next_screen(){
      {this.state.next_screen ?  this.change_screen('Question1',false) : this.change_screen('test', true)  }
-=======
+  }
+
   set_index(newIndex) {
     if(this.state.index < 10) {
      this.setState({index: newIndex});
-    }
->>>>>>> 224ed7321c4629c016c966dde3fe20f9f8548959
+   }
   }
 
-  render() {
+  render(){
     return (
-<<<<<<< HEAD
+
       <View style={styles.survey_block} elevation={5}>
         <View style={styles.block1}>
-          <Text style={[styles.font_style, styles.title] }>Should the government {"\n"}provide public healthcare {"\n"}for all Americans? </Text>
-=======
-      <View style={styles.survey_block}>
-        <View>
-          <Text style={[styles.font_style, styles.title] }>{questions["question" + this.state.index].qtext} </Text>
->>>>>>> 224ed7321c4629c016c966dde3fe20f9f8548959
+          <Text style={[styles.font_style, styles.title] }> {questions["question" + this.state.index].qtext} </Text>
         </View>
 
-        <Text> this.state.questions[this.num_question].qtext</Text>
+        <Text>{questions["question" + this.state.index].pic}</Text>
 
-        <Image style={styles.question_image} source={require('../lib/1.png')}/>
+        <Image style={styles.question_image} src ={{questions["question" + this.state.index].pic} } />
 
         <Checkbox  setResponse={this.set_response}/>
 
-<<<<<<< HEAD
         <Text> Response: {this.state.response} </Text>
 
-        <TouchableHighlight onPress = {() => this.reset()}><Text>Next</Text></TouchableHighlight>
-=======
-            <View elevation={5} style={styles.response}>
-              <Button
-                onPress = {() => this.set_index(this.state.index + 1)}
-                title="No"/>
-            </View>
-
-            <View elevation={5} style={styles.response}>
-              <Button
-                onPress = {() => this.set_index(this.state.index + 1)}
-                title="Yes"/>
-            </View>
-        </View>
->>>>>>> 224ed7321c4629c016c966dde3fe20f9f8548959
+        <TouchableHighlight onPress = {() => this.set_index(this.state.index + 1)}><Text>Next</Text></TouchableHighlight>
 
       </View>
     )

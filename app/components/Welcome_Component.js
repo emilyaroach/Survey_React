@@ -4,13 +4,11 @@ import {connect} from 'react-redux';
 import {createStackNavigator,createSwitchNavigator,createMaterialTopTabNavigator,createBottomTabNavigator, NavigationActions} from 'react-navigation';
 import Survey_start from './Survey_start';
 import Question1 from '../containers/Question1_container'
-import Question6 from './Question6.js'
 
 var RootStack = createStackNavigator(
   {
     Home: {screen: Survey_start},
     Question1: {screen: Question1},
-    Question2: {screen: Question6},
     test: {screen: Question1}
   },
   {
