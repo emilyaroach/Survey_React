@@ -51,6 +51,20 @@ class Question1 extends React.Component {
     if(this.state.index < 10) {
      this.setState({index: newIndex});
    }
+    
+   componentDidMount() {
+     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+   }
+
+  componentWillUnmount() {
+     BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+   }
+
+  // Still need to figure out how we want the transition
+  handleBackPress = () => {
+    return true;
+  }
+  
   }
 
   render(){
