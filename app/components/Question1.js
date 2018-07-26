@@ -63,7 +63,8 @@ class Question1 extends React.Component {
 
         <Text>{questions["question" + this.state.index].pic}</Text>
 
-        <Image style={styles.question_image} src ={{questions["question" + this.state.index].pic} } />
+        <Image source={{uri: questions["question" + this.state.index].pic}}
+       style={{width: 334, height: 187}} />
 
         <Checkbox  setResponse={this.set_response}/>
 
