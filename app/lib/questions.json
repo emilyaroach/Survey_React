@@ -1,41 +1,41 @@
 {
         "question1":
-            {"qtext":"Should the government guarantee healthcare for all Americans?",
-            "pic":"../lib/1.png"}
+            {"qtext":"Should the government guarantee healthcare for all Americans?", 
+            "pic":"https://github.com/emilyaroach/civicpics/blob/master/1.png?raw=true"}
        ,
         "question2":
-            {"qtext":"Should the government reduce immigration into the United States?",
-            "pic":"../lib/12.png"}
+            {"qtext":"Should the government reduce immigration into the United States?", 
+            "pic":"https://github.com/emilyaroach/civicpics/blob/master/12.png?raw=true"}
         ,
         "question3":
-            {"qtext":"Should the government reduce funding for public eduacation?",
-            "pic":"../lib/13.png"}
+            {"qtext":"Should the government reduce funding for public eduacation?", 
+            "pic":"https://github.com/emilyaroach/civicpics/blob/master/13.png?raw=true"}
         ,
         "question4":
-        	{"qtext" : "Should the government increase the minimum wage?",
-            "pic":"../lib/14.png"}
+        	{"qtext" : "Should the government increase the minimum wage?", 
+            "pic":"https://github.com/emilyaroach/civicpics/blob/master/14.png?raw=true"}
         ,
         "question5":
-            {"qtext":"Should the government restrict access to abortion?",
-            "pic":"../lib/15.png"}
+            {"qtext":"Should the government restrict access to abortion?", 
+            "pic":"https://github.com/emilyaroach/civicpics/blob/master/15.png?raw=true"}
         ,
         "question6":
-            {"qtext":"Should the government increase protection of the environment?",
-            "pic":"../lib/16.png"}
+            {"qtext":"Should the government increase protection of the environment?", 
+            "pic":"https://github.com/emilyaroach/civicpics/blob/master/16.png?raw=true"}
         ,
         "question7":
         	{"qtext":"Should the government increase gun control?",
-            "pic":"../lib/17.png"}
+            "pic":"https://github.com/emilyaroach/civicpics/blob/master/17.png?raw=true"}
         ,
         "question8":
-            {"qtext":"Should the government increase investments in renewable energy?",
-            "pic":"../lib/18.png"}
+            {"qtext":"Should the government increase investments in renewable energy?", 
+            "pic":"https://github.com/emilyaroach/civicpics/blob/master/18.png?raw=true"}
         ,
         "question9":
-            {"qtext":"Should the government do more to address racism against people of color?",
-            "pic":"../lib/19.png"}
+            {"qtext":"Should the government do more to address racism against people of color?", 
+            "pic":"https://github.com/emilyaroach/civicpics/blob/master/19.png?raw=true"}
         ,
         "question10":
         	{"qtext":"Should the government recognize same-sex marriage?",
-            "pic":"../lib/110.png"}
+            "pic":"https://github.com/emilyaroach/civicpics/blob/master/110.png?raw=true"}
 }
